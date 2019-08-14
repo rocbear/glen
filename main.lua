@@ -87,11 +87,6 @@ end
 
 function gety(bh, th, oh)
     return bh - 70
-    -- if (oh > th) then
-    --     return bh + (object_offset - oh)
-    -- else
-    --     return bh + (object_offset - oh)
-    -- end
 end
 
 function love.draw()
