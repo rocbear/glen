@@ -22,6 +22,11 @@ function love.load()
     bush = {quad = bush_quad, offset_x = -45, offset_y = 30}
     tree = {quad = tree_quad, offset_x = -70, offset_y = 580}
     objects = {rock, bush, tree}
+    objects_weighted = {
+        rock, rock, rock, 
+        bush, bush, bush, bush, bush,
+        tree
+    }
     for i = 1, floor_tile_count, 1 do
         floor_tiles[i] = love.graphics.newQuad(0, (i - 1) * floor_tile_height,
                                                floor_tile_width,
@@ -48,21 +53,8 @@ function love.load()
         table.insert(stage, {x = pointer.x, y = pointer.y, tile = tile})
 
         -- insert object
-        if tile == floor_tiles[3] then
-            object = love.math.random() > 0.5 and bush or rock
-            quad = object.quad
-            _, _, object_width, object_height = quad:getViewport()
-            table.insert(stage_objects, {
-                x = pointer.x,
-                y = pointer.y,
-                offset_x = object.offset_x,
-                offset_y = object.offset_y,
-                tile = object.quad
-            })
-        end
-
-        if tile == floor_tiles[2] then
-            object = love.math.random() > 0.90 and tree or bush
+        if love.math.random() > 0.94 then
+            object = objects_weighted[love.math.random(table.getn(objects_weighted))]
             quad = object.quad
             _, _, object_width, object_height = quad:getViewport()
             table.insert(stage_objects, {
