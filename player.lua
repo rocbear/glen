@@ -40,7 +40,7 @@ end
 function player.draw()
     -- love.graphics.new
     -- love.graphics.drawLayer(image, 1, idleDLQuad, 100, 100)
-    love.graphics.draw(image, idleDRQuad, player.position.x,
+    love.graphics.draw(image, animation.getQuad(), player.position.x,
                        player.position.y)
 end
 

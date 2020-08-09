@@ -15,6 +15,6 @@ end
 function love.draw()
     love.graphics.scale(scale, scale)
     map.draw()
-    player.draw()
     map.drawObjects()
+    player.draw()
 end
